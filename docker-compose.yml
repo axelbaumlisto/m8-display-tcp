@@ -6,11 +6,11 @@ services:
     build: .
     container_name: m8-display
     restart: unless-stopped
-    ports:
-      # HTTP/WebSocket server
-      - "8080:8080"
-      # TCP proxy for remote m8c clients
-      - "3333:3333"
+    network_mode: host
+    # ports not needed with host network
+    # ports:
+    #   - "8080:8080"
+    #   - "3333:3333"
     environment:
       - M8_HTTP_PORT=8080
       - M8_TCP_PORT=3333
